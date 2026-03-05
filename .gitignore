@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+uploads/
+NEIG-ProofGuard file structure.txt
+backend/test_evidence.txt

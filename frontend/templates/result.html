@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NEIG - Hash Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>⚖️ NEIG</h1>
+        <h3>NATIONAL EVIDENCE INTEGRITY GRID</h3>
+
+        <p class="success">✅ Hash Generated Successfully!</p>
+
+        <p class="label">File Name:</p>
+        <div class="hash-box">{{ filename }}</div>
+
+        <p class="label">SHA-256 Hash:</p>
+        <div class="hash-box">{{ hash_value }}</div>
+
+        <a href="/">← Upload Another File</a>
+    </div>
+</body>
+</html>
