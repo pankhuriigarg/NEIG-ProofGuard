@@ -1,3 +1,7 @@
+> ⚠️ This project was developed for India Innovates 2026 by Team ProofGuard. 
+> Original work by Pankhuri Garg, IMS Engineering College, Ghaziabad.
+> Submission Date: March 2026.
+
 # NEIG - National Evidence Integrity Grid
 
 A blockchain-based digital evidence integrity verification system 
