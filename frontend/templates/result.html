@@ -10,7 +10,13 @@
         <h1>⚖️ NEIG</h1>
         <h3>NATIONAL EVIDENCE INTEGRITY GRID</h3>
 
-        <p class="success">✅ Hash Generated Successfully!</p>
+        <p class="success">✅ Evidence Stored on Blockchain Successfully!</p>
+
+        <p class="label">Case ID:</p>
+        <div class="hash-box">{{ case_id }}</div>
+
+        <p class="label">Investigator Name:</p>
+        <div class="hash-box">{{ investigator_name }}</div>
 
         <p class="label">File Name:</p>
         <div class="hash-box">{{ filename }}</div>
@@ -18,7 +24,16 @@
         <p class="label">SHA-256 Hash:</p>
         <div class="hash-box">{{ hash_value }}</div>
 
+        <p class="label">Blockchain Transaction Hash:</p>
+        <div class="hash-box">{{ tx_hash }}</div>
+
+        <p class="label">ZKP Proof Generated:</p>
+        <div class="hash-box">✅ Zero Knowledge Proof Generated Successfully</div>
+
         <a href="/">← Upload Another File</a>
+        <a href="/dashboard" style="margin-top:10px;">📊 View Dashboard</a>
+        <a href="/transfer" style="margin-top:10px;">🔄 Transfer Custody</a>
+        <a href="/court" style="margin-top:10px;">🏛️ Go to Court Portal</a>
     </div>
 </body>
 </html>

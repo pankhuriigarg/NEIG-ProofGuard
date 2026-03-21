@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NEIG - Transfer Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>⚖️ NEIG</h1>
+        <h3>NATIONAL EVIDENCE INTEGRITY GRID</h3>
+
+        <p class="success">✅ Custody Transferred Successfully!</p>
+
+        <p class="label">Case ID:</p>
+        <div class="hash-box">{{ case_id }}</div>
+
+        <p class="label">From:</p>
+        <div class="hash-box">{{ from_custodian }}</div>
+
+        <p class="label">To:</p>
+        <div class="hash-box">{{ to_custodian }}</div>
+
+        <p class="label">Blockchain Transaction Hash:</p>
+        <div class="hash-box">{{ tx_hash }}</div>
+
+        <a href="/dashboard">← Back to Dashboard</a>
+        <a href="/transfer" style="margin-top:10px;">🔄 Transfer Another</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEIG - Transfer Custody</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>⚖️ NEIG</h1>
+        <h3>NATIONAL EVIDENCE INTEGRITY GRID</h3>
+        <p style="color:#aaaaaa; font-size:13px; margin-bottom:20px;">
+            Chain of Custody — Transfer Evidence
+        </p>
+
+        <form action="/transfer" method="POST">
+            
+            <p class="label">Case ID:</p>
+            <input type="text" 
+                   name="case_id" 
+                   placeholder="Enter Case ID (e.g. CASE001)" 
+                   required
+                   style="width:100%; padding:10px; background:#0a0a0a; 
+                          border:1px solid #00d4ff33; border-radius:8px; 
+                          color:white; margin-bottom:15px; font-size:14px;">
+
+            <p class="label">From Custodian:</p>
+            <input type="text" 
+                   name="from_custodian" 
+                   placeholder="Current custodian name" 
+                   required
+                   style="width:100%; padding:10px; background:#0a0a0a; 
+                          border:1px solid #00d4ff33; border-radius:8px; 
+                          color:white; margin-bottom:15px; font-size:14px;">
+
+            <p class="label">To Custodian:</p>
+            <input type="text" 
+                   name="to_custodian" 
+                   placeholder="New custodian name" 
+                   required
+                   style="width:100%; padding:10px; background:#0a0a0a; 
+                          border:1px solid #00d4ff33; border-radius:8px; 
+                          color:white; margin-bottom:15px; font-size:14px;">
+
+            <p class="label">Remarks:</p>
+            <input type="text" 
+                   name="remarks" 
+                   placeholder="Reason for transfer" 
+                   required
+                   style="width:100%; padding:10px; background:#0a0a0a; 
+                          border:1px solid #00d4ff33; border-radius:8px; 
+                          color:white; margin-bottom:15px; font-size:14px;">
+
+            <button type="submit">🔄 TRANSFER CUSTODY</button>
+        </form>
+
+        <a href="/dashboard">← Back to Dashboard</a>
+    </div>
+</body>
+</html>

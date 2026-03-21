@@ -3,3 +3,4 @@ __pycache__/
 uploads/
 NEIG-ProofGuard file structure.txt
 backend/test_evidence.txt
+config.py

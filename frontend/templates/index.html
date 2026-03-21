@@ -10,14 +10,43 @@
     <div class="container">
         <h1>⚖️ NEIG</h1>
         <h3>NATIONAL EVIDENCE INTEGRITY GRID</h3>
+        <p style="color:#aaaaaa; font-size:13px; margin-bottom:20px;">
+            Investigator Portal — Upload & Store Evidence
+        </p>
         
         <form action="/upload" method="POST" enctype="multipart/form-data">
+            
+            <p class="label">Case ID:</p>
+            <input type="text" 
+                   name="case_id" 
+                   placeholder="Enter Case ID (e.g. CASE001)" 
+                   required
+                   style="width:100%; padding:10px; background:#0a0a0a; 
+                          border:1px solid #00d4ff33; border-radius:8px; 
+                          color:white; margin-bottom:15px; font-size:14px;">
+
+            <p class="label">Investigator Name:</p>
+            <input type="text" 
+                   name="investigator_name" 
+                   placeholder="Enter your name" 
+                   required
+                   style="width:100%; padding:10px; background:#0a0a0a; 
+                          border:1px solid #00d4ff33; border-radius:8px; 
+                          color:white; margin-bottom:15px; font-size:14px;">
+            
             <div class="upload-area">
-                <p style="color:#aaaaaa; margin-bottom:15px;">Select Evidence File</p>
+                <p style="color:#aaaaaa; margin-bottom:15px;">
+                    Select Evidence File
+                </p>
                 <input type="file" name="file" required>
             </div>
-            <button type="submit">🔐 GENERATE HASH</button>
+            
+            <button type="submit">🔐 GENERATE HASH & STORE ON BLOCKCHAIN</button>
         </form>
+
+        <a href="/dashboard" style="margin-top:10px;">📊 View Dashboard</a>
+        <a href="/court" style="margin-top:10px;">🏛️ Court Portal</a>
+        <a href="/transfer" style="margin-top:10px;">🔄 Transfer Custody</a>
     </div>
 </body>
 </html>
