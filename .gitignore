@@ -4,3 +4,12 @@ uploads/
 NEIG-ProofGuard file structure.txt
 backend/test_evidence.txt
 config.py
+node_modules/
+zkp/node_modules/
+zkp/pot12_0000.ptau
+zkp/pot12_final.ptau
+zkp/witness.wtns
+zkp/input.json
+zkp/proof.json
+zkp/public.json
+zkp/circuit_0000.zkey
