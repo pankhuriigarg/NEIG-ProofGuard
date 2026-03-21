@@ -21,14 +21,17 @@ Zero Knowledge Proofs to ensure evidence authenticity.
 - SHA-256 (hashlib)
 - Ethereum Blockchain (Ganache + Web3.py)
 - Solidity Smart Contract
-- Circom + snarkjs (ZKP) — in progress
+- Circom + snarkjs (ZKP) 
 - HTML/CSS
 
 ## Features
-- Evidence upload + hash generation
+- Evidence upload + SHA-256 hash generation
 - Blockchain storage with transaction hash
-- Court verification portal
-- Tamper detection — Authentic ✅ or Tampered ❌
+- Zero Knowledge Proof (ZKP) verification
+- Court verification portal — Authentic ✅ or Tampered ❌
+- Chain of Custody (CoC) — complete transfer history
+- Evidence Dashboard — all cases with timestamps
+- Custody Transfer — investigator to court handover
 
 ## How to Run
 1. Start Ganache: `ganache`
@@ -37,7 +40,7 @@ Zero Knowledge Proofs to ensure evidence authenticity.
 4. Open: `http://127.0.0.1:5000`
 
 ## Status
-🚧 In Development — India Innovates 2026
+✅ Prototype Complete — India Innovates 2026
 
 ## Team
 ProofGuard — India Innovates 2026
