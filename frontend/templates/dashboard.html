@@ -5,66 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEIG - Dashboard</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th {
-            background: #00d4ff22;
-            color: #00d4ff;
-            padding: 10px;
-            text-align: left;
-            font-size: 13px;
-            border-bottom: 1px solid #00d4ff33;
-        }
-        td {
-            padding: 10px;
-            color: #ffffff;
-            font-size: 12px;
-            border-bottom: 1px solid #ffffff11;
-        }
-        tr:hover {
-            background: #ffffff08;
-        }
-        .container {
-            width: 90%;
-            max-width: 900px;
-        }
-    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>⚖️ NEIG</h1>
-        <h3>NATIONAL EVIDENCE INTEGRITY GRID</h3>
-        <p style="color:#aaaaaa; font-size:13px; margin-bottom:10px;">
-            Evidence Dashboard — All Cases
-        </p>
+    {% include 'navbar.html' %}
 
-        {% if cases %}
-        <table>
-            <tr>
-                <th>Case ID</th>
-                <th>File Name</th>
-                <th>Timestamp</th>
-                <th>Custody Count</th>
-            </tr>
-            {% for case in cases %}
-            <tr>
-                <td>{{ case.case_id }}</td>
-                <td>{{ case.file_name }}</td>
-                <td>{{ case.timestamp }}</td>
-                <td>{{ case.custody_count }}</td>
-            </tr>
-            {% endfor %}
-        </table>
-        {% else %}
-        <p style="color:#aaaaaa; margin-top:20px;">No cases found.</p>
-        {% endif %}
+    <div class="page">
+        <div class="page-header animate">
+            <div class="page-title">Evidence Dashboard</div>
+            <div class="page-subtitle">All registered cases on blockchain</div>
+        </div>
 
-        <a href="/">← Back to Home</a>
-        <a href="/transfer" style="margin-top:10px;">🔄 Transfer Custody</a>
+        <div class="stats-row animate animate-delay-1">
+            <div class="stat-card">
+                <div class="stat-number">{{ cases|length }}</div>
+                <div class="stat-label">Total Cases</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">
+                    {{ cases|sum(attribute='custody_count') }}
+                </div>
+                <div class="stat-label">Custody Records</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">🔒</div>
+                <div class="stat-label">Blockchain Secured</div>
+            </div>
+        </div>
+
+        <div class="card animate animate-delay-2" style="padding:0;">
+            {% if cases %}
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Case ID</th>
+                            <th>File Name</th>
+                            <th>Timestamp</th>
+                            <th>Custody Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for case in cases %}
+                        <tr>
+                            <td>
+                                <span class="badge badge-gold">
+                                    {{ case.case_id }}
+                                </span>
+                            </td>
+                            <td>{{ case.file_name }}</td>
+                            <td style="color:var(--muted);">
+                                {{ case.timestamp }}
+                            </td>
+                            <td>
+                                <span class="badge badge-cyan">
+                                    {{ case.custody_count }} records
+                                </span>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div style="padding:40px; text-align:center; color:var(--muted);">
+                No cases found. Upload evidence to get started.
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="action-links animate animate-delay-3">
+            <a href="/" class="action-link">← Upload Evidence</a>
+            <a href="/transfer" class="action-link">🔄 Transfer Custody</a>
+        </div>
     </div>
 </body>
 </html>

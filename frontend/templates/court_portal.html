@@ -7,35 +7,37 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <div class="container">
-        <h1>⚖️ NEIG</h1>
-        <h3>NATIONAL EVIDENCE INTEGRITY GRID</h3>
-        <p style="color:#aaaaaa; font-size:13px; margin-bottom:20px;">
-            Court Verification Portal — Verify Evidence Authenticity
-        </p>
-        
-        <form action="/verify" method="POST" enctype="multipart/form-data">
-            
-            <p class="label">Case ID:</p>
-            <input type="text" 
-                   name="case_id" 
-                   placeholder="Enter Case ID (e.g. CASE001)" 
-                   required
-                   style="width:100%; padding:10px; background:#0a0a0a; 
-                          border:1px solid #00d4ff33; border-radius:8px; 
-                          color:white; margin-bottom:15px; font-size:14px;">
-            
-            <div class="upload-area">
-                <p style="color:#aaaaaa; margin-bottom:15px;">
-                    Upload Evidence File to Verify
-                </p>
-                <input type="file" name="file" required>
-            </div>
-            
-            <button type="submit">🔍 VERIFY EVIDENCE</button>
-        </form>
+    {% include 'navbar.html' %}
 
-        <a href="/">← Back to Investigator Portal</a>
+    <div class="page-sm">
+        <div class="page-header animate">
+            <div class="page-title">Court Verification Portal</div>
+            <div class="page-subtitle">Verify Evidence Authenticity on Blockchain</div>
+        </div>
+
+        <div class="card animate animate-delay-1">
+            <form action="/verify" method="POST" enctype="multipart/form-data">
+
+                <div class="form-group">
+                    <label class="form-label">Case ID</label>
+                    <input type="text" name="case_id" class="form-input"
+                           placeholder="e.g. CASE001" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Evidence File</label>
+                    <div class="upload-zone">
+                        <div class="upload-icon">🔍</div>
+                        <div class="upload-text">Upload evidence file to verify</div>
+                        <input type="file" name="file" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    🔍 Verify Evidence Integrity
+                </button>
+            </form>
+        </div>
     </div>
 </body>
 </html>

@@ -4,73 +4,73 @@
     <meta charset="UTF-8">
     <title>NEIG - Verdict</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-        th {
-            background: #00d4ff22;
-            color: #00d4ff;
-            padding: 8px;
-            text-align: left;
-            font-size: 12px;
-            border-bottom: 1px solid #00d4ff33;
-        }
-        td {
-            padding: 8px;
-            color: #ffffff;
-            font-size: 11px;
-            border-bottom: 1px solid #ffffff11;
-        }
-    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>⚖️ NEIG</h1>
-        <h3>NATIONAL EVIDENCE INTEGRITY GRID</h3>
+    {% include 'navbar.html' %}
+
+    <div class="page-sm">
 
         {% if is_authentic %}
-        <p class="success">✅ Evidence is AUTHENTIC — Not Tampered!</p>
+        <div class="verdict-banner verdict-authentic animate">
+            <div class="verdict-icon">✅</div>
+            <div class="verdict-title">EVIDENCE AUTHENTIC</div>
+            <div style="color:#6b7d96; font-size:13px; margin-top:8px;">
+                Hash matches blockchain record — Not Tampered
+            </div>
+        </div>
         {% else %}
-        <p style="color:#ff4444; font-size:13px; margin-top:15px;">
-            ❌ Evidence is TAMPERED — Hash Mismatch Detected!
-        </p>
+        <div class="verdict-banner verdict-tampered animate">
+            <div class="verdict-icon">❌</div>
+            <div class="verdict-title">EVIDENCE TAMPERED</div>
+            <div style="color:#6b7d96; font-size:13px; margin-top:8px;">
+                Hash mismatch detected — Evidence has been modified
+            </div>
+        </div>
         {% endif %}
 
-        <p class="label">Case ID:</p>
-        <div class="hash-box">{{ case_id }}</div>
-
-        <p class="label">File Name:</p>
-        <div class="hash-box">{{ filename }}</div>
-
-        <p class="label">SHA-256 Hash (Submitted):</p>
-        <div class="hash-box">{{ hash_value }}</div>
+        <div class="card animate animate-delay-1">
+            <div class="data-row">
+                <div class="data-label">Case ID</div>
+                <div class="data-value white">{{ case_id }}</div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">File Name</div>
+                <div class="data-value white">{{ filename }}</div>
+            </div>
+            <div class="data-row" style="margin-bottom:0;">
+                <div class="data-label">SHA-256 Hash (Submitted)</div>
+                <div class="data-value">{{ hash_value }}</div>
+            </div>
+        </div>
 
         {% if custody_history %}
-        <p class="label" style="margin-top:20px;">Chain of Custody:</p>
-        <table>
-            <tr>
-                <th>From</th>
-                <th>To</th>
-                <th>Timestamp</th>
-                <th>Remarks</th>
-            </tr>
-            {% for record in custody_history %}
-            <tr>
-                <td>{{ record.from }}</td>
-                <td>{{ record.to }}</td>
-                <td>{{ record.timestamp }}</td>
-                <td>{{ record.remarks }}</td>
-            </tr>
-            {% endfor %}
-        </table>
+        <div class="card animate animate-delay-2">
+            <div class="data-label" style="margin-bottom:16px;">
+                Chain of Custody
+            </div>
+            <div class="coc-timeline">
+                {% for record in custody_history %}
+                <div class="coc-item">
+                    <div class="coc-from-to">
+                        <span class="coc-name">{{ record.from }}</span>
+                        <span class="coc-arrow">→</span>
+                        <span class="coc-name" style="color:var(--gold);">
+                            {{ record.to }}
+                        </span>
+                    </div>
+                    <div class="coc-time">{{ record.timestamp }}</div>
+                    <div class="coc-remark">{{ record.remarks }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
         {% endif %}
 
-        <a href="/court">← Verify Another File</a>
-        <a href="/dashboard" style="margin-top:10px;">📊 Dashboard</a>
-        <a href="/" style="margin-top:10px;">🏠 Back to Home</a>
+        <div class="action-links animate animate-delay-3">
+            <a href="/court" class="action-link">← Verify Another</a>
+            <a href="/dashboard" class="action-link">📊 Dashboard</a>
+            <a href="/" class="action-link">🏠 Home</a>
+        </div>
     </div>
 </body>
 </html>

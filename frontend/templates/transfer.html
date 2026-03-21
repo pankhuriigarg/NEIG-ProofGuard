@@ -7,55 +7,46 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <div class="container">
-        <h1>⚖️ NEIG</h1>
-        <h3>NATIONAL EVIDENCE INTEGRITY GRID</h3>
-        <p style="color:#aaaaaa; font-size:13px; margin-bottom:20px;">
-            Chain of Custody — Transfer Evidence
-        </p>
+    {% include 'navbar.html' %}
 
-        <form action="/transfer" method="POST">
-            
-            <p class="label">Case ID:</p>
-            <input type="text" 
-                   name="case_id" 
-                   placeholder="Enter Case ID (e.g. CASE001)" 
-                   required
-                   style="width:100%; padding:10px; background:#0a0a0a; 
-                          border:1px solid #00d4ff33; border-radius:8px; 
-                          color:white; margin-bottom:15px; font-size:14px;">
+    <div class="page-sm">
+        <div class="page-header animate">
+            <div class="page-title">Transfer Custody</div>
+            <div class="page-subtitle">Record Chain of Custody on Blockchain</div>
+        </div>
 
-            <p class="label">From Custodian:</p>
-            <input type="text" 
-                   name="from_custodian" 
-                   placeholder="Current custodian name" 
-                   required
-                   style="width:100%; padding:10px; background:#0a0a0a; 
-                          border:1px solid #00d4ff33; border-radius:8px; 
-                          color:white; margin-bottom:15px; font-size:14px;">
+        <div class="card animate animate-delay-1">
+            <form action="/transfer" method="POST">
 
-            <p class="label">To Custodian:</p>
-            <input type="text" 
-                   name="to_custodian" 
-                   placeholder="New custodian name" 
-                   required
-                   style="width:100%; padding:10px; background:#0a0a0a; 
-                          border:1px solid #00d4ff33; border-radius:8px; 
-                          color:white; margin-bottom:15px; font-size:14px;">
+                <div class="form-group">
+                    <label class="form-label">Case ID</label>
+                    <input type="text" name="case_id" class="form-input"
+                           placeholder="e.g. CASE001" required>
+                </div>
 
-            <p class="label">Remarks:</p>
-            <input type="text" 
-                   name="remarks" 
-                   placeholder="Reason for transfer" 
-                   required
-                   style="width:100%; padding:10px; background:#0a0a0a; 
-                          border:1px solid #00d4ff33; border-radius:8px; 
-                          color:white; margin-bottom:15px; font-size:14px;">
+                <div class="form-group">
+                    <label class="form-label">From Custodian</label>
+                    <input type="text" name="from_custodian" class="form-input"
+                           placeholder="Current custodian name" required>
+                </div>
 
-            <button type="submit">🔄 TRANSFER CUSTODY</button>
-        </form>
+                <div class="form-group">
+                    <label class="form-label">To Custodian</label>
+                    <input type="text" name="to_custodian" class="form-input"
+                           placeholder="New custodian name" required>
+                </div>
 
-        <a href="/dashboard">← Back to Dashboard</a>
+                <div class="form-group">
+                    <label class="form-label">Remarks</label>
+                    <input type="text" name="remarks" class="form-input"
+                           placeholder="Reason for transfer" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    🔄 Transfer Custody on Blockchain
+                </button>
+            </form>
+        </div>
     </div>
 </body>
 </html>

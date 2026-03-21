@@ -2,30 +2,49 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>NEIG - Transfer Result</title>
+    <title>NEIG - Transfer Complete</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <div class="container">
-        <h1>⚖️ NEIG</h1>
-        <h3>NATIONAL EVIDENCE INTEGRITY GRID</h3>
+    {% include 'navbar.html' %}
 
-        <p class="success">✅ Custody Transferred Successfully!</p>
+    <div class="page-sm">
+        <div class="alert alert-success animate">
+            ✅ Custody Transferred Successfully on Blockchain!
+        </div>
 
-        <p class="label">Case ID:</p>
-        <div class="hash-box">{{ case_id }}</div>
+        <div class="card animate animate-delay-1">
+            <div class="data-row">
+                <div class="data-label">Case ID</div>
+                <div class="data-value white">{{ case_id }}</div>
+            </div>
 
-        <p class="label">From:</p>
-        <div class="hash-box">{{ from_custodian }}</div>
+            <div class="data-row">
+                <div class="data-label">From Custodian</div>
+                <div class="data-value white">{{ from_custodian }}</div>
+            </div>
 
-        <p class="label">To:</p>
-        <div class="hash-box">{{ to_custodian }}</div>
+            <div class="data-row" style="margin-bottom:0;">
+                <div class="data-label">To Custodian</div>
+                <div class="data-value white" 
+                     style="color:var(--gold); border-color:var(--border);">
+                    {{ to_custodian }}
+                </div>
+            </div>
+        </div>
 
-        <p class="label">Blockchain Transaction Hash:</p>
-        <div class="hash-box">{{ tx_hash }}</div>
+        <div class="card animate animate-delay-2">
+            <div class="data-label">Blockchain Transaction Hash</div>
+            <div class="data-value gold" style="margin-top:8px;">
+                {{ tx_hash }}
+            </div>
+        </div>
 
-        <a href="/dashboard">← Back to Dashboard</a>
-        <a href="/transfer" style="margin-top:10px;">🔄 Transfer Another</a>
+        <div class="action-links animate animate-delay-3">
+            <a href="/dashboard" class="action-link">📊 Dashboard</a>
+            <a href="/transfer" class="action-link">🔄 Transfer Another</a>
+            <a href="/" class="action-link">🏠 Home</a>
+        </div>
     </div>
 </body>
 </html>

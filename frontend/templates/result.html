@@ -2,38 +2,56 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>NEIG - Hash Result</title>
+    <title>NEIG - Evidence Stored</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <div class="container">
-        <h1>⚖️ NEIG</h1>
-        <h3>NATIONAL EVIDENCE INTEGRITY GRID</h3>
+    {% include 'navbar.html' %}
 
-        <p class="success">✅ Evidence Stored on Blockchain Successfully!</p>
+    <div class="page-sm">
+        <div class="alert alert-success animate">
+            ✅ Evidence Stored on Blockchain Successfully!
+        </div>
 
-        <p class="label">Case ID:</p>
-        <div class="hash-box">{{ case_id }}</div>
+        <div class="card animate animate-delay-1">
+            <div class="data-row">
+                <div class="data-label">Case ID</div>
+                <div class="data-value white">{{ case_id }}</div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">Investigator</div>
+                <div class="data-value white">{{ investigator_name }}</div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">File Name</div>
+                <div class="data-value white">{{ filename }}</div>
+            </div>
+        </div>
 
-        <p class="label">Investigator Name:</p>
-        <div class="hash-box">{{ investigator_name }}</div>
+        <div class="card animate animate-delay-2">
+            <div class="data-row">
+                <div class="data-label">SHA-256 Hash</div>
+                <div class="data-value">{{ hash_value }}</div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">Blockchain Transaction Hash</div>
+                <div class="data-value gold">{{ tx_hash }}</div>
+            </div>
+        </div>
 
-        <p class="label">File Name:</p>
-        <div class="hash-box">{{ filename }}</div>
+        <div class="card animate animate-delay-3">
+            <div class="data-label">ZKP Verification</div>
+            <div class="alert alert-info" style="margin-top:10px; margin-bottom:0;">
+                🔒 Zero Knowledge Proof Generated Successfully
+            </div>
+        </div>
 
-        <p class="label">SHA-256 Hash:</p>
-        <div class="hash-box">{{ hash_value }}</div>
-
-        <p class="label">Blockchain Transaction Hash:</p>
-        <div class="hash-box">{{ tx_hash }}</div>
-
-        <p class="label">ZKP Proof Generated:</p>
-        <div class="hash-box">✅ Zero Knowledge Proof Generated Successfully</div>
-
-        <a href="/">← Upload Another File</a>
-        <a href="/dashboard" style="margin-top:10px;">📊 View Dashboard</a>
-        <a href="/transfer" style="margin-top:10px;">🔄 Transfer Custody</a>
-        <a href="/court" style="margin-top:10px;">🏛️ Go to Court Portal</a>
+        <div class="action-links animate animate-delay-4">
+            <a href="/" class="action-link">← Upload Another</a>
+            <a href="/dashboard" class="action-link">📊 Dashboard</a>
+            <a href="/transfer" class="action-link">🔄 Transfer Custody</a>
+            <a href="/court" class="action-link">🏛️ Court Portal</a>
+        </div>
     </div>
 </body>
 </html>
